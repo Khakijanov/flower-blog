@@ -55,7 +55,7 @@ const UplodeImg = () => {
             Url
           </TabsTrigger>
           <TabsTrigger className="w-full" value="default">
-            dufault
+            default
           </TabsTrigger>
         </TabsList>
         <TabsContent value="local">
@@ -79,7 +79,7 @@ const UplodeImg = () => {
           <div className="flex gap-5">
             <Input
               ref={urlInput}
-              e ? value : ""}
+              defaultValue={value && value != value ? value : ""}
               name="file"
               type="url"
               id="url"
@@ -93,6 +93,16 @@ const UplodeImg = () => {
               {value ? <UpdateIcon /> : <PlusIcon />}
             </Button>
           </div>
+        </TabsContent>
+        <TabsContent value="default">
+          <Button
+            className="w-full"
+            onClick={() => setValue(FlowerImg)}
+            type="button"
+            variant={"secondary"}
+          >
+            defult rasim qo'yish
+          </Button>
         </TabsContent>
       </Tabs>
       {value && showImage && (
