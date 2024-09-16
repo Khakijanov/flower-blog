@@ -38,8 +38,13 @@ export const login = async (data) => {
   }
 };
 
-export const getFlowers = async (token) => {
-  const res = await fetch(BASE_URL + "/gullar", {
+export const getFlowers = async (token, { limit, skip, category }) => {
+  const search = new URLSearchParams(`skip=${skip}&limit=${limit}`);
+  if (category) {
+    search.append("category", category);
+  }
+
+  const res = await fetch(BASE_URL + `/gullar?` + search, {
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${token}`,
@@ -54,7 +59,7 @@ export const getFlowers = async (token) => {
     throw new Error("Nimadir hatolik bo'ldi");
   }
 };
-export const uplodeIMG = async (image) => {
+export const uploadImage = async (image) => {
   const formData = new FormData();
   formData.append("file", image);
   const res = await fetch(BASE_URL + "/upload", {

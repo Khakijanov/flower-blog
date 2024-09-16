@@ -3,7 +3,7 @@ import { create } from "zustand";
 export const useAppStore = create((set) => ({
   admin: JSON.parse(localStorage.getItem("admin")) || null,
   flowers: null,
-  addItemModal: true,
+  addItemModal: false,
   setAdmin: (admin) =>
     set(() => {
       if (admin) {
